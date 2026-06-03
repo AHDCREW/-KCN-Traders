@@ -35,7 +35,7 @@ const steps = [
 ]
 
 function padFrame(n: number) {
-  return `/frames/frame_${String(n).padStart(4, '0')}.png`
+  return `/frames/frame_${String(n).padStart(4, '0')}.webp`
 }
 
 export default function TrustSection() {

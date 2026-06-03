@@ -54,19 +54,48 @@ export default function HowItWorks() {
     return () => ro.disconnect()
   }, [renderFrame])
 
-  // Preload all frames; draw frame 0 as soon as it loads
+  // Preload all frames; draw frame 0 as soon as it loads.
+  // Hold off until the hero video can play through so the two don't fight
+  // for bandwidth on first load (the video is above the fold — it wins).
   useEffect(() => {
+    let cancelled = false
+    let started = false
+    let timeoutId: ReturnType<typeof setTimeout> | undefined
     const images: (HTMLImageElement | null)[] = new Array(FRAME_COUNT).fill(null)
     imagesRef.current = images
-    for (let i = 0; i < FRAME_COUNT; i++) {
-      const img = new Image()
-      img.src = `/frames/frame_${String(i + 1).padStart(4, '0')}.png`
-      img.onload = () => {
-        images[i] = img
-        if (i === 0) renderFrame(0)
+
+    const preloadFrames = () => {
+      for (let i = 0; i < FRAME_COUNT; i++) {
+        const img = new Image()
+        img.src = `/frames/frame_${String(i + 1).padStart(4, '0')}.webp`
+        img.onload = () => {
+          images[i] = img
+          if (i === 0) renderFrame(0)
+        }
       }
     }
+
+    const heroVideo = document.querySelector<HTMLVideoElement>('#hero-video')
+    const start = () => {
+      if (started || cancelled) return
+      started = true
+      heroVideo?.removeEventListener('canplaythrough', start)
+      preloadFrames()
+    }
+
+    // readyState >= 3 (HAVE_FUTURE_DATA) means the video is already playable.
+    if (!heroVideo || heroVideo.readyState >= 3) {
+      start()
+    } else {
+      heroVideo.addEventListener('canplaythrough', start)
+      // Fallback: never block frames forever if the video stalls or errors.
+      timeoutId = setTimeout(start, 6000)
+    }
+
     return () => {
+      cancelled = true
+      if (timeoutId) clearTimeout(timeoutId)
+      heroVideo?.removeEventListener('canplaythrough', start)
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current)
     }
   }, [renderFrame])
