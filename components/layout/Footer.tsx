@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Leaf } from 'lucide-react'
+import Image from 'next/image'
 
 const columns = [
   {
@@ -40,11 +40,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-10">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-lg bg-[#2E7D32] flex items-center justify-center">
-                <Leaf size={14} className="text-white" />
-              </div>
-              <span className="font-semibold text-[#1F2937] tracking-tight">KCN Traders</span>
+            <Link href="/" className="inline-flex items-center mb-4">
+              <Image
+                src="/images/KCN logo png.png"
+                alt="KCN Traders"
+                width={120}
+                height={48}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="text-sm text-[#6B7280] leading-relaxed max-w-[200px]">
               From Kerala&apos;s coastal fields to global markets — a growing agro-export legacy built on experience and trust.

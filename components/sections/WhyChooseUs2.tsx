@@ -94,7 +94,7 @@ export default function WhyChooseUs2() {
         {/* Quote */}
         <div className="mt-24 text-center max-w-4xl mx-auto flex flex-col items-center">
           <blockquote className="text-xl md:text-2xl font-medium text-green-700 italic leading-snug mb-6">
-            "Freshness must reach directly to the market without losing value."
+            &ldquo;Freshness must reach directly to the market without losing value.&rdquo;
           </blockquote>
           <div className="flex items-center gap-4">
             <div className="h-px w-12 bg-gray-300" />
