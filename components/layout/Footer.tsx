@@ -47,7 +47,7 @@ export default function Footer() {
               <span className="font-semibold text-[#1F2937] tracking-tight">KCN Traders</span>
             </Link>
             <p className="text-sm text-[#6B7280] leading-relaxed max-w-[200px]">
-              From Kerala's coastal fields to global markets — a growing agro-export legacy built on experience and trust.
+              From Kerala&apos;s coastal fields to global markets — a growing agro-export legacy built on experience and trust.
             </p>
           </div>
 

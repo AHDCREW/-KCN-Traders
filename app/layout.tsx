@@ -20,6 +20,10 @@ export const metadata: Metadata = {
   title: "KCN Traders — From Local Fields to Global Markets",
   description: "KCN / K.C. Nammakkal Traders — a generational agro-export network supplying fresh produce from Kerala's coastal farms to domestic wholesale and international markets.",
   keywords: "agro export, KCN traders, Nammakkal traders, fresh vegetables export, Kerala farm produce, wholesale vegetables India",
+  icons: {
+    icon: "/images/KCN logo png.png",
+    apple: "/images/KCN logo png.png",
+  },
 };
 
 export default function RootLayout({
