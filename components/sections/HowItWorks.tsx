@@ -89,12 +89,12 @@ export default function HowItWorks() {
           <div className="h-full flex flex-col lg:flex-row">
 
             {/* ── Left: frame canvas ── */}
-            <div className="relative flex-none bg-[#111] h-[45vh] lg:h-full lg:w-[55%]">
+            <div className="relative flex-none bg-[#111] h-[38vh] sm:h-[45vh] lg:h-full lg:w-[55%]">
               <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
             </div>
 
             {/* ── Right: step content ── */}
-            <div className="flex-1 relative flex flex-col justify-between px-8 lg:px-14 py-10 overflow-hidden">
+            <div className="flex-1 relative flex flex-col justify-between px-6 sm:px-8 lg:px-14 py-7 sm:py-10 overflow-hidden">
 
               {/* Background image */}
               <div
@@ -107,13 +107,13 @@ export default function HowItWorks() {
               {/* Content sits above the overlay */}
               {/* Top — section heading */}
               <div className="relative z-10">
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#4ADE80] mb-4">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#4ADE80] mb-2 sm:mb-4">
                   Our Process
                 </p>
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
+                <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight">
                   From Field to<br />Your Door
                 </h2>
-                <p className="text-white/50 mt-4 text-base">
+                <p className="hidden sm:block text-white/50 mt-4 text-base">
                   4 steps. Farm to market.
                 </p>
               </div>
@@ -126,21 +126,21 @@ export default function HowItWorks() {
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="relative z-10"
               >
-                <p className="text-sm font-semibold uppercase tracking-widest text-[#4ADE80] mb-5">
+                <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest text-[#4ADE80] mb-2 sm:mb-5">
                   Step {steps[activeStep].num}
                 </p>
-                <h3 className="text-3xl lg:text-5xl font-bold text-white leading-tight mb-5">
+                <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold text-white leading-tight mb-3 sm:mb-5">
                   {steps[activeStep].title}
                 </h3>
-                <div className="w-12 h-[2px] bg-[#4ADE80] mb-5 rounded-full" />
-                <p className="text-lg lg:text-xl text-white/70 leading-relaxed max-w-sm">
+                <div className="w-10 sm:w-12 h-[2px] bg-[#4ADE80] mb-3 sm:mb-5 rounded-full" />
+                <p className="text-sm sm:text-lg lg:text-xl text-white/70 leading-relaxed max-w-sm">
                   {steps[activeStep].desc}
                 </p>
               </motion.div>
 
               {/* Bottom — progress + hint */}
               <div className="relative z-10">
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                   {steps.map((_, i) => (
                     <div
                       key={i}
@@ -152,7 +152,7 @@ export default function HowItWorks() {
                       }}
                     />
                   ))}
-                  <span className="ml-2 text-base tabular-nums text-white/40">
+                  <span className="ml-2 text-sm sm:text-base tabular-nums text-white/40">
                     {String(activeStep + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
                   </span>
                 </div>
